@@ -29,14 +29,14 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
             new GiftCard
             (
               company: "Amazon",
-              value: 50.0,
+              value: 25.0,
               last4Digits: "7156",
               img: "res/logo/amazon.png",
             ),
             new GiftCard
             (
-              company: "Apple",
-              value: 25.0,
+              company: "Apple / iTunes",
+              value: 100.0,
               last4Digits: "2558",
               img: "res/logo/apple.png",
             ),
@@ -47,10 +47,16 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
               last4Digits: "4516",
               img: "res/logo/google_play.png",
             ),
+            new Container(margin: new EdgeInsets.all(32.0)) // FloatingActionButton space
           ],
         ),
       ),
       drawer: navigationDrawer(),
+      floatingActionButton: new FloatingActionButton
+      (
+        onPressed: () => noSuchMethod,
+        child: new Icon(Icons.add),
+      ),
     );
   }
 
@@ -64,7 +70,7 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
         [
           new Container
           (
-            margin: new EdgeInsets.only(top: 32.0, bottom: 16.0),
+            margin: new EdgeInsets.only(top: 32.0, bottom: 32.0),
             child: new Column
             (
               mainAxisAlignment: MainAxisAlignment.center,
@@ -79,7 +85,7 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
                 new Container
                 (
                   margin: new EdgeInsets.only(top: 16.0),
-                  child: new Text("Ivascu Adrian", style: Theme.of(context).textTheme.title),
+                  child: new Text("Ivascu Adrian", style: Theme.of(context).textTheme.title, textScaleFactor: 1.4),
                 ),
               ],
             ),
@@ -141,6 +147,36 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
       )
     );
   }
+
+  Widget pillButton(Widget child)
+  {
+    return new Container
+    (
+      margin: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+      child: new Material
+      (
+        elevation: 8.0,
+        borderRadius: new BorderRadius.circular(32.0),
+        child: new InkWell
+        (
+          onTap: () => null,
+          child: new Container
+          (
+            decoration: new BoxDecoration
+            (
+              borderRadius: new BorderRadius.circular(32.0),
+              gradient: new LinearGradient
+              (
+                colors: <Color> [new Color.fromARGB(255, 93, 107, 232), new Color.fromARGB(255, 89, 182, 191)]
+              ),
+            ),
+            child: new Center(child: child),
+            padding: new EdgeInsets.symmetric(horizontal: 48.0),
+          ),
+        )
+      )
+    );
+  }
 }
 
 class GiftCard extends StatelessWidget
@@ -181,7 +217,7 @@ class GiftCard extends StatelessWidget
               new ListTile
               (
                 title: new Text("\$$value", style: Theme.of(context).textTheme.title, textScaleFactor: 2.0,),
-                trailing: squaredButton("Exchange >"),
+                trailing: squaredButton("Exchange"),
               )
             ],
           )
@@ -211,38 +247,12 @@ class GiftCard extends StatelessWidget
                 colors: <Color> [new Color.fromARGB(255, 93, 107, 232), new Color.fromARGB(255, 89, 182, 191)]
               ),
             ),
-            child: new Text(btnText.toUpperCase(), style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-            padding: new EdgeInsets.all(10.0)
-          ),
-        )
-      )
-    );
-  }
-
-  Widget roundedPillButton()
-  {
-    return new Container
-    (
-      margin: new EdgeInsets.all(8.0),
-      child: new Material
-      (
-        elevation: 8.0,
-        borderRadius: new BorderRadius.circular(32.0),
-        child: new InkWell
-        (
-          onTap: () => null,
-          child: new Container
-          (
-            decoration: new BoxDecoration
+            child: new Container
             (
-              borderRadius: new BorderRadius.circular(32.0),
-              gradient: new LinearGradient
-              (
-                colors: <Color> [new Color.fromARGB(255, 93, 107, 232), new Color.fromARGB(255, 89, 182, 191)]
-              ),
+              margin: new EdgeInsets.symmetric(horizontal: 4.0),
+              child: new Text(btnText.toUpperCase(), style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
             ),
-            child: new Text("\$50", style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-            padding: new EdgeInsets.symmetric(horizontal: 80.0, vertical: 20.0),
+            padding: new EdgeInsets.all(10.0)
           ),
         )
       )
