@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screen_add_giftcard.dart';
 
 class ScreenExchangeList extends StatefulWidget
 {
@@ -54,7 +55,7 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
       drawer: navigationDrawer(),
       floatingActionButton: new FloatingActionButton
       (
-        onPressed: () => noSuchMethod,
+        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ScreenAddGiftcard())),
         child: new Icon(Icons.add),
       ),
     );
@@ -217,7 +218,7 @@ class GiftCard extends StatelessWidget
               new ListTile
               (
                 title: new Text("\$$value", style: Theme.of(context).textTheme.title, textScaleFactor: 2.0,),
-                trailing: squaredButton("Exchange"),
+                trailing: squaredButton("Exchange", context),
               )
             ],
           )
@@ -226,7 +227,7 @@ class GiftCard extends StatelessWidget
     );
   }
 
-  Widget squaredButton(String btnText)
+  Widget squaredButton(String btnText, BuildContext context)
   {
     return new Container
     (
@@ -257,14 +258,5 @@ class GiftCard extends StatelessWidget
         )
       )
     );
-  }
-}
-
-class OpenCard extends StatelessWidget
-{
-  @override
-  Widget build(BuildContext context)
-  {
-    
   }
 }
