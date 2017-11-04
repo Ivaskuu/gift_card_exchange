@@ -33,6 +33,14 @@ flutter:
    - res/logo/amazon.png
    - res/logo/apple.png
    - res/logo/google_play.png
+   - res/logo/dominos.jpg
+   - res/logo/ovs.jpg
+   - res/logo/rayban.png
+   - res/logo/starbucks.png
+   - res/logo/zalando.png
+   - res/logo/hm.png
+   - res/logo/xbox.png
+   - res/logo/steam.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

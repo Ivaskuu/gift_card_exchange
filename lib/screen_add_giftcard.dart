@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screen_exchange_list.dart';
 
 class ScreenAddGiftcard extends StatefulWidget
 {

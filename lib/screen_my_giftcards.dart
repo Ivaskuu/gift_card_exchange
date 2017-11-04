@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'screen_add_giftcard.dart';
+import 'screen_exchange.dart';
 
-class ScreenExchangeList extends StatefulWidget
+class ScreenMyGiftcards extends StatefulWidget
 {
   @override
-  State createState() => new ScreenExchangeListState();
+  State createState() => new ScreenMyGiftcardsState();
 }
 
-class ScreenExchangeListState extends State<ScreenExchangeList>
+class ScreenMyGiftcardsState extends State<ScreenMyGiftcards>
 {
   @override
   Widget build(BuildContext context)
@@ -16,7 +17,7 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
     (
       appBar: new AppBar
       (
-        title: new Text("Gift card exchange"),
+        title: new Text("My gift cards"),
         actions: [new IconButton(icon: new Icon(Icons.search), onPressed: () => null,)],
       ),
       //backgroundColor: Colors.pink,
@@ -107,7 +108,7 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
                   new Container
                   (
                     margin: new EdgeInsets.only(left: 8.0),
-                    child: new Chip(label: new Text("32"))
+                    child: new Chip(label: new Text("3"))
                   )
                 ]
               )
@@ -237,7 +238,7 @@ class GiftCard extends StatelessWidget
         borderRadius: new BorderRadius.circular(2.0),
         child: new InkWell
         (
-          onTap: () => null,
+          onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ScreenExchange())),
           child: new Container
           (
             decoration: new BoxDecoration
