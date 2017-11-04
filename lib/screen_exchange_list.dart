@@ -37,6 +37,95 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
           ],
         ),
       ),
+      drawer: navigationDrawer(),
+    );
+  }
+
+  Widget navigationDrawer()
+  {
+    return new Drawer
+    (
+      child: new ListView
+      (
+        children: <Widget>
+        [
+          new Container
+          (
+            margin: new EdgeInsets.only(top: 32.0, bottom: 16.0),
+            child: new Column
+            (
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>
+              [
+                new CircleAvatar
+                (
+                  radius: 64.0,
+                  backgroundImage: new AssetImage("res/me.jpg"),
+                ),
+                new Container
+                (
+                  margin: new EdgeInsets.only(top: 16.0),
+                  child: new Text("Ivascu Adrian", style: Theme.of(context).textTheme.title),
+                ),
+              ],
+            ),
+          ),
+          new FlatButton
+          (
+            onPressed: () => null,
+            child: new ListTile
+            (
+              leading: new Icon(Icons.card_giftcard),
+              title: new Row
+              (
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>
+                [
+                  new Text("My gift cards"),
+                  new Container
+                  (
+                    margin: new EdgeInsets.only(left: 8.0),
+                    child: new Chip(label: new Text("32"))
+                  )
+                ]
+              )
+            ),
+          ),
+          new FlatButton
+          (
+            onPressed: () => null,
+            child: new ListTile
+            (
+              leading: new Icon(Icons.swap_horiz),
+              title: new Text("Exchange gift cards"),
+            ),
+          ),
+          new FlatButton
+          (
+            onPressed: () => null,
+            child: new ListTile
+            (
+              leading: new Icon(Icons.settings),
+              title: new Text("Settings"),
+            ),
+          ),
+          new Container
+          (
+            margin: new EdgeInsets.only(top: 16.0, left: 72.0, right: 72.0),
+            child: new FlatButton
+            (
+              onPressed: () => null,
+              child: new ListTile
+              (
+                title: new Text("LOGOUT", style: new TextStyle(color: Colors.blueAccent)),
+                trailing: new Icon(Icons.exit_to_app, color: Colors.blueAccent),
+              )
+            )
+          )
+        ],
+      )
     );
   }
 }

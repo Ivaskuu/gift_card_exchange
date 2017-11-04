@@ -29,6 +29,7 @@ flutter:
   assets:
    - res/bg.png
    - res/bg2.jpg
+   - res/me.jpg
    - res/logo/amazon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
