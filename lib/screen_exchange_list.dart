@@ -21,19 +21,32 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
       //backgroundColor: Colors.pink,
       body: new Container
       (
-        decoration: new BoxDecoration
-        (
-          //image: new DecorationImage(image: new AssetImage("res/bg2.jpg"), fit: BoxFit.cover)
-        ),
         child: new ListView
         (
           scrollDirection: Axis.vertical,
           children: <Widget>
           [
-            new ClosedCard(),
-            new ClosedCard(),
-            new ClosedCard(),
-            new ClosedCard()
+            new GiftCard
+            (
+              company: "Amazon",
+              value: 50.0,
+              last4Digits: "7156",
+              img: "res/logo/amazon.png",
+            ),
+            new GiftCard
+            (
+              company: "Apple",
+              value: 25.0,
+              last4Digits: "2558",
+              img: "res/logo/apple.png",
+            ),
+            new GiftCard
+            (
+              company: "Google Play",
+              value: 50.0,
+              last4Digits: "4516",
+              img: "res/logo/google_play.png",
+            ),
           ],
         ),
       ),
@@ -130,27 +143,49 @@ class ScreenExchangeListState extends State<ScreenExchangeList>
   }
 }
 
-class ClosedCard extends StatelessWidget
+class GiftCard extends StatelessWidget
 {
+  final String company;
+  final double value;
+  final String last4Digits;
+  final String img;
+  GiftCard({this.company, this.value, this.last4Digits, this.img});
+
   @override
   Widget build(BuildContext context)
   {
     return new Container
     (
       margin: new EdgeInsets.symmetric(horizontal: 16.0),
-      child: new SizedBox.fromSize
+      child: new Card
       (
-        size: new Size.fromHeight(90.0),
-        child: new Card
+        child: new Container
         (
-          child: new ListTile
+          margin: new EdgeInsets.symmetric(vertical: 16.0),
+          child: new Column
           (
-            leading: new Image.asset("res/logo/amazon.png"),
-            title: new Text("Amazon"),
-            subtitle: new Text("50 €"),
-            trailing: squaredButton("Exchange >"),
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>
+            [
+              new ListTile
+              (
+                title: new Image.asset(img, alignment: FractionalOffset.centerLeft),
+                trailing: new Text("$company gift card", style: Theme.of(context).textTheme.title),
+              ),
+              new Container
+              (
+                margin: new EdgeInsets.symmetric(vertical: 16.0),
+                child: new Text("XXXX-XXXX-XXXX-$last4Digits", style: Theme.of(context).textTheme.headline),
+              ),
+              new ListTile
+              (
+                title: new Text("\$$value", style: Theme.of(context).textTheme.title, textScaleFactor: 2.0,),
+                trailing: squaredButton("Exchange >"),
+              )
+            ],
           )
-        ),
+        )
       )
     );
   }

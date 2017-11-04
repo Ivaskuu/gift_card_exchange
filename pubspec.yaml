@@ -31,6 +31,8 @@ flutter:
    - res/bg2.jpg
    - res/me.jpg
    - res/logo/amazon.png
+   - res/logo/apple.png
+   - res/logo/google_play.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
