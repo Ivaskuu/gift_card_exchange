@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'screen_add_giftcard.dart';
+import 'main.dart';
+import 'giftcard.dart';
 import 'dart:async';
+import 'dart:math';
+
+int pos;
 
 class ScreenExchange extends StatefulWidget
 {
+  int arrayPos;
+  ScreenExchange(this.arrayPos)
+  {
+    pos = this.arrayPos;
+  }
+
   @override
   State createState() => new ScreenExchangeState();
 }
@@ -30,55 +41,55 @@ class ScreenExchangeState extends State<ScreenExchange>
             new GiftCard
             (
               company: "Apple / iTunes",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/apple.png",
             ),
             new GiftCard
             (
               company: "Google Play",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/google_play.png",
             ),
             new GiftCard
             (
               company: "Starbucks",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/starbucks.png",
             ),
             new GiftCard
             (
               company: "Rayban",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/rayban.png",
             ),
             new GiftCard
             (
               company: "Domino's pizza",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/dominos.jpg",
             ),
             new GiftCard
             (
               company: "OVS",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/ovs.jpg",
             ),
             new GiftCard
             (
               company: "H&M",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/hm.png",
             ),
             new GiftCard
             (
               company: "Xbox",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/xbox.png",
             ),
             new GiftCard
             (
               company: "Steam",
-              value: 25.0,
+              value: myGiftcards[pos].value,
               img: "res/logo/steam.png",
             ),
           ],
@@ -154,7 +165,7 @@ class GiftCard extends StatelessWidget
       child: new AlertDialog
       (
         title: new Text("$companyName gift card"),
-        content: new Text("By clicking the 'Exchange' button you will exchange your Amazon gift card into a Starbucks gift card"),
+        content: new Text("By clicking the 'Exchange' button you will exchange your ${myGiftcards[pos].company} gift card into a $companyName gift card"),
         actions: <Widget>
         [
           new FlatButton
@@ -200,6 +211,17 @@ class GiftCard extends StatelessWidget
       )
     );
     new Future.delayed(new Duration(seconds: 3), () {
+      myGiftcards.removeAt(pos);
+      pendingGiftcards.add
+      (
+        new Giftcard
+        (
+          company: company,
+          img: img,
+          last4Digits: "${new Random().nextInt(9)}${new Random().nextInt(9)}${new Random().nextInt(9)}${new Random().nextInt(9)}",
+          value: value
+        )
+      );
       Navigator.pop(context);
       showExchangedDialog(context);
     });

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screen_add_giftcard.dart';
 import 'screen_exchange.dart';
-import 'giftcard.dart';
-import 'main.dart';
-
-ScreenMyGiftcardsState screenState;
 
 class ScreenMyGiftcards extends StatefulWidget
 {
@@ -17,25 +13,44 @@ class ScreenMyGiftcardsState extends State<ScreenMyGiftcards>
   @override
   Widget build(BuildContext context)
   {
-    screenState = this;
     return new Scaffold
     (
       appBar: new AppBar
       (
         title: new Text("My gift cards"),
-        actions: [new IconButton(icon: new Icon(Icons.search), onPressed: () => null)],
+        actions: [new IconButton(icon: new Icon(Icons.search), onPressed: () => null,)],
       ),
+      //backgroundColor: Colors.pink,
       body: new Container
       (
-        child: new ListView.builder
+        child: new ListView
         (
-          itemBuilder: (_, int i)
-          {
-            return i < myGiftcards.length
-              ? new GiftcardCard(myGiftcards[i], i)
-              : new Container(margin: new EdgeInsets.all(36.0)); // FloatingActionButton space
-          },
-          itemCount: myGiftcards.length + 1,
+          scrollDirection: Axis.vertical,
+          children: <Widget>
+          [
+            new GiftCard
+            (
+              company: "Amazon",
+              value: 25.0,
+              last4Digits: "7156",
+              img: "res/logo/amazon.png",
+            ),
+            new GiftCard
+            (
+              company: "Apple / iTunes",
+              value: 100.0,
+              last4Digits: "2558",
+              img: "res/logo/apple.png",
+            ),
+            new GiftCard
+            (
+              company: "Google Play",
+              value: 50.0,
+              last4Digits: "4516",
+              img: "res/logo/google_play.png",
+            ),
+            new Container(margin: new EdgeInsets.all(32.0)) // FloatingActionButton space
+          ],
         ),
       ),
       drawer: navigationDrawer(),
@@ -166,11 +181,13 @@ class ScreenMyGiftcardsState extends State<ScreenMyGiftcards>
   }
 }
 
-class GiftcardCard extends StatelessWidget
+class GiftCard extends StatelessWidget
 {
-  final Giftcard giftcard;
-  final int pos;
-  GiftcardCard(this.giftcard, this.pos);
+  final String company;
+  final double value;
+  final String last4Digits;
+  final String img;
+  GiftCard({this.company, this.value, this.last4Digits, this.img});
 
   @override
   Widget build(BuildContext context)
@@ -191,17 +208,17 @@ class GiftcardCard extends StatelessWidget
             [
               new ListTile
               (
-                title: new Image.asset(giftcard.img, alignment: FractionalOffset.centerLeft),
-                trailing: new Text("${giftcard.company} gift card", style: Theme.of(context).textTheme.title),
+                title: new Image.asset(img, alignment: FractionalOffset.centerLeft),
+                trailing: new Text("$company gift card", style: Theme.of(context).textTheme.title),
               ),
               new Container
               (
                 margin: new EdgeInsets.symmetric(vertical: 16.0),
-                child: new Text("XXXX-XXXX-XXXX-${giftcard.last4Digits}", style: Theme.of(context).textTheme.headline),
+                child: new Text("XXXX-XXXX-XXXX-$last4Digits", style: Theme.of(context).textTheme.headline),
               ),
               new ListTile
               (
-                title: new Text("\$${giftcard.value}", style: Theme.of(context).textTheme.title, textScaleFactor: 2.0,),
+                title: new Text("\$$value", style: Theme.of(context).textTheme.title, textScaleFactor: 2.0,),
                 trailing: squaredButton("Exchange", context),
               )
             ],
@@ -221,7 +238,7 @@ class GiftcardCard extends StatelessWidget
         borderRadius: new BorderRadius.circular(2.0),
         child: new InkWell
         (
-          onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ScreenExchange(pos))).then((_) => screenState.setState(() => null)),
+          //onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ScreenExchange(giftCard))),
           child: new Container
           (
             decoration: new BoxDecoration

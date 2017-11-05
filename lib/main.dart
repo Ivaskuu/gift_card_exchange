@@ -1,7 +1,43 @@
 import 'package:flutter/material.dart';
 import 'screen_my_giftcards.dart';
+import 'giftcard.dart';
 
-void main() {
+List<Giftcard> myGiftcards =
+[
+  new Giftcard
+  (
+    company: "Amazon",
+    value: 25.0,
+    last4Digits: "7156",
+    img: "res/logo/amazon.png",
+  ),
+  new Giftcard
+  (
+    company: "Apple / iTunes",
+    value: 100.0,
+    last4Digits: "2558",
+    img: "res/logo/apple.png",
+  ),
+  new Giftcard
+  (
+    company: "Google Play",
+    value: 50.0,
+    last4Digits: "4516",
+    img: "res/logo/google_play.png",
+  ),
+  new Giftcard
+  (
+    company: "Steam",
+    value: 50.0,
+    last4Digits: "3427",
+    img: "res/logo/steam.png",
+  ),
+];
+
+List<Giftcard> pendingGiftcards = new List();
+
+void main()
+{
   runApp(new MyApp());
 }
 
