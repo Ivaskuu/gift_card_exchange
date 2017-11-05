@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screen_my_giftcards.dart';
+import 'screen_main.dart';
 import 'giftcard.dart';
 
 List<Giftcard> myGiftcards =
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.pink,
       ),
-      home: new ScreenMyGiftcards()
+      home: new ScreenMain()
     );
   }
 }

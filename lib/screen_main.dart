@@ -3,10 +3,47 @@ import 'screen_pending_giftcards.dart';
 import 'screen_my_giftcards.dart';
 import 'main.dart';
 
-class NavigationDrawer extends StatelessWidget
+// Needed for the navigation drawer
+int actualScreen = 0;
+List<Widget> screens =
+[
+  new ScreenMyGiftcards(),
+  new ScreenPendingGiftcards()
+];
+List<AppBar> appBars =
+[
+  new AppBar
+  (
+    title: new Text("My gift cards"),
+    actions: [new IconButton(icon: new Icon(Icons.search), onPressed: () => null)],
+  ),
+  new AppBar
+  (
+    title: new Text("Pending gift cards"),
+    actions: [new IconButton(icon: new Icon(Icons.info), onPressed: () => null,)],
+  ),
+];
+
+class ScreenMain extends StatefulWidget
+{
+  @override
+  State createState() => new ScreenMainState();
+}
+
+class ScreenMainState extends State<ScreenMain>
 {
   @override
   Widget build(BuildContext context)
+  {
+    return new Scaffold
+    (
+      appBar: appBars[actualScreen],
+      body: screens[actualScreen],
+      drawer: navigationDrawer(),
+    );
+  }
+
+  Widget navigationDrawer()
   {
     return new Drawer
     (
@@ -38,7 +75,7 @@ class NavigationDrawer extends StatelessWidget
           ),
           new FlatButton
           (
-            onPressed: () => Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) => new ScreenMyGiftcards())),
+            onPressed: () { Navigator.pop(context); setState(() => actualScreen = 0); },
             child: new ListTile
             (
               leading: new Icon(Icons.card_giftcard),
@@ -60,7 +97,7 @@ class NavigationDrawer extends StatelessWidget
           ),
           new FlatButton
           (
-            onPressed: () => Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) => new ScreenPendingGiftcards())),
+            onPressed: () { Navigator.pop(context); setState(() => actualScreen = 1); },
             child: new ListTile
             (
               leading: new Icon(Icons.autorenew),

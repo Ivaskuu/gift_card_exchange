@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screen_add_giftcard.dart';
-import 'navigation_drawer.dart';
 import 'giftcard.dart';
 import 'main.dart';
 
@@ -17,11 +16,6 @@ class ScreenPendingGiftcardsState extends State<ScreenPendingGiftcards>
   {
     return new Scaffold
     (
-      appBar: new AppBar
-      (
-        title: new Text("Pending gift cards"),
-        actions: [new IconButton(icon: new Icon(Icons.info), onPressed: () => null,)],
-      ),
       body: new Container
       (
         child: pendingGiftcards.length > 0
@@ -41,7 +35,6 @@ class ScreenPendingGiftcardsState extends State<ScreenPendingGiftcards>
             child: new Text("No pending giftcard."),
           )
       ),
-      drawer: new NavigationDrawer(),
     );
   }
 }

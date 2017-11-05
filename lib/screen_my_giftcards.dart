@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screen_add_giftcard.dart';
-import 'navigation_drawer.dart';
 import 'screen_exchange.dart';
 import 'giftcard.dart';
 import 'main.dart';
@@ -21,11 +20,6 @@ class ScreenMyGiftcardsState extends State<ScreenMyGiftcards>
     screenState = this;
     return new Scaffold
     (
-      appBar: new AppBar
-      (
-        title: new Text("My gift cards"),
-        actions: [new IconButton(icon: new Icon(Icons.search), onPressed: () => null)],
-      ),
       body: new Container
       (
         child: new ListView.builder
@@ -39,7 +33,6 @@ class ScreenMyGiftcardsState extends State<ScreenMyGiftcards>
           itemCount: myGiftcards.length + 1,
         ),
       ),
-      drawer: new NavigationDrawer(),
       floatingActionButton: new FloatingActionButton
       (
         onPressed: () => Navigator.of(context).push(new MaterialPageRoute(builder: (_) => new ScreenAddGiftcard())),
