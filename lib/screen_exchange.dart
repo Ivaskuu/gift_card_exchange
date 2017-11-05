@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'screen_add_giftcard.dart';
-import 'main.dart';
 import 'giftcard.dart';
 import 'dart:async';
+import 'main.dart';
 import 'dart:math';
 
 int pos;
+double value;
 
 class ScreenExchange extends StatefulWidget
 {
@@ -13,6 +13,7 @@ class ScreenExchange extends StatefulWidget
   ScreenExchange(this.arrayPos)
   {
     pos = this.arrayPos;
+    value = myGiftcards[pos].value;
   }
 
   @override
@@ -41,55 +42,55 @@ class ScreenExchangeState extends State<ScreenExchange>
             new GiftCard
             (
               company: "Apple / iTunes",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/apple.png",
             ),
             new GiftCard
             (
               company: "Google Play",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/google_play.png",
             ),
             new GiftCard
             (
               company: "Starbucks",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/starbucks.png",
             ),
             new GiftCard
             (
               company: "Rayban",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/rayban.png",
             ),
             new GiftCard
             (
               company: "Domino's pizza",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/dominos.jpg",
             ),
             new GiftCard
             (
               company: "OVS",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/ovs.jpg",
             ),
             new GiftCard
             (
               company: "H&M",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/hm.png",
             ),
             new GiftCard
             (
               company: "Xbox",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/xbox.png",
             ),
             new GiftCard
             (
               company: "Steam",
-              value: myGiftcards[pos].value,
+              value: value,
               img: "res/logo/steam.png",
             ),
           ],
